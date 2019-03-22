@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements MainView {
 
     EditText panjang, lebar;
-    TextView tvhasil;
+    TextView tvhasil, tvhasilkeliling;
     Button hitung;
     private MainPresenter presenter;
 
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         lebar = findViewById(R.id.lebar);
         tvhasil = findViewById(R.id.hasil);
         hitung = findViewById(R.id.hitung);
+        tvhasilkeliling = findViewById(R.id.hasilkeliling);
 
         initPresenter();
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
                                           Double tinggi = Double.valueOf(panjang.getText().toString());
 
                                           presenter.hitungLuas(alas, tinggi);
+                                          presenter.hitungKeliling(alas, tinggi);
                                       }
                                   }
         );
@@ -45,7 +47,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
-    public void updateTextHasil(Double luas) {
+    public void updateTextHasil(Double luas ) {
         tvhasil.setText(luas.toString());
+
+    }
+
+    @Override
+    public void updateTextKeliling(Double keliling) {
+        tvhasilkeliling.setText(keliling.toString());
     }
 }
